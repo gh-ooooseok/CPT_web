@@ -10,11 +10,11 @@ function gyroInit() {
     //Find out Div Element
     window.addEventListener("deviceorientation", handleOrientation, true);
     console.log("add el");
-    dataContainerOrientation.innerHTML = "test";	
+    // dataContainerOrientation.innerHTML = "test";	
 
     window.addEventListener('devicemotion', function(event) {
         console.log(event.acceleration.x + ' m/s2');
-        dataContainerOrientation.innerHTML = "1 " + event.acceleration.x;	
+        // dataContainerOrientation.innerHTML = "1 " + event.acceleration.x;	
     });
 }
 
@@ -40,4 +40,10 @@ function handleOrientation(event) {
 
 window.onload = function () {
     gyroInit();
+    if (window.DeviceOrientationEvent) {
+        dataContainerOrientation.innerHTML = "DeviceOrientation is supported";
+       } else if (window.OrientationEvent) {
+        dataContainerOrientation.innerHTML = ("MozOrientation is supported";
+       }
+       
 }

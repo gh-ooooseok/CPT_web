@@ -11,7 +11,7 @@ function gyroInit() {
     var maxY = garden.clientHeight * 2- ball.clientHeight;
 
     //가속도계가 기기의 방향의 변화를 감지 했을때
-    if(window.DeviceOrientationEvent) {
+    if(this.isWithoutDeviceMotion) {
         //이벤트 리스너 등록
         window.addEventListener('deviceorientation', function(event) {
             var absolute = event.absolute;
@@ -32,6 +32,12 @@ function gyroInit() {
             ball.style.left = (maxY*gamma/180 + 100) + "px";
 
         }, true);
+    }
+
+    window.ondevicemotion = function(event) {
+        var accelerationX = event.accelerationIncludingGravity.x;
+        var accelerationY = event.accelerationIncludingGravity.y;
+        var accelerationZ = event.accelerationIncludingGravity.z;
     }
 }
 

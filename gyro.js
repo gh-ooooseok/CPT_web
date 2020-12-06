@@ -10,28 +10,28 @@ function gyroInit() {
     var maxX = garden.clientWidth * 2 - ball.clientWidth;
     var maxY = garden.clientHeight * 2- ball.clientHeight;
 
-    // //가속도계가 기기의 방향의 변화를 감지 했을때
+    //가속도계가 기기의 방향의 변화를 감지 했을때
+    console.log("add el");
     // if(this.isWithoutDeviceMotion) {
-    //  
-    //     window.addEventListener('deviceorientation', function(event) {
-    //         var absolute = event.absolute;
-    //         var alpha = event.alpha;
-    //         var beta = event.beta; //(-180, 180)
-    //         var gamma = event.gamma; //(-90, 90)
-    //         console.log(gamma);
-    //         var html =  "absolute: " +absolute+ "<br>alpha: " +alpha+ "<br>bata: " +beta+ "<br>gamma: "+ gamma; 
-    //         dataContainerOrientation.innerHTML = html;	
+    window.addEventListener('deviceorientation', function(event) {
+        var absolute = event.absolute;
+        var alpha = event.alpha;
+        var beta = event.beta; //(-180, 180)
+        var gamma = event.gamma; //(-90, 90)
+        console.log(gamma);
+        var html =  "absolute: " +absolute+ "<br>alpha: " +alpha+ "<br>bata: " +beta+ "<br>gamma: "+ gamma; 
+        dataContainerOrientation.innerHTML = html;	
 
-    //         //볼을 움직이자.
-    //         if(beta > 90) {beta = 90};
-    //         if(beta < -90) {beta = -90};
-    //         beta +90;
-    //         gamma +90;
+        //볼을 움직이자.
+        if(beta > 90) {beta = 90};
+        if(beta < -90) {beta = -90};
+        beta +90;
+        gamma +90;
 
-    //         ball.style.top = (maxX*beta/180 + 100) + "px";
-    //         ball.style.left = (maxY*gamma/180 + 100) + "px";
+        ball.style.top = (maxX*beta/180 + 100) + "px";
+        ball.style.left = (maxY*gamma/180 + 100) + "px";
 
-    //     }, true);
+    }, true);
     // }
 
     window.ondevicemotion = function(event) {
@@ -43,31 +43,5 @@ function gyroInit() {
 
 window.onload = function () {
     gyroInit();
-    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-        DeviceOrientationEvent.requestPermission()
-          .then(permissionState => {
-            if (permissionState === 'granted') {
-              window.addEventListener('deviceorientation', () => {
-                var absolute = event.absolute;
-                var alpha = event.alpha;
-                var beta = event.beta; //(-180, 180)
-                var gamma = event.gamma; //(-90, 90)
-                console.log(gamma);
-                var html =  "absolute: " +absolute+ "<br>alpha: " +alpha+ "<br>bata: " +beta+ "<br>gamma: "+ gamma; 
-                dataContainerOrientation.innerHTML = html;	
-    
-                //볼을 움직이자.
-                if(beta > 90) {beta = 90};
-                if(beta < -90) {beta = -90};
-                beta +90;
-                gamma +90;
-    
-                ball.style.top = (maxX*beta/180 + 100) + "px";
-                ball.style.left = (maxY*gamma/180 + 100) + "px";});
-            }
-          })
-          .catch(console.error);
-      } else {
-        // handle regular non iOS 13+ devices
-      }
+
 }

@@ -11,6 +11,11 @@ function gyroInit() {
     window.addEventListener("deviceorientation", handleOrientation, true);
     console.log("add el");
     dataContainerOrientation.innerHTML = "test";	
+
+    window.addEventListener('devicemotion', function(event) {
+        console.log(event.acceleration.x + ' m/s2');
+        dataContainerOrientation.innerHTML = "1 " + event.acceleration.x;	
+    });
 }
 
 function handleOrientation(event) {

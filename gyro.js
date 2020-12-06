@@ -13,6 +13,7 @@ function gyroInit() {
     //가속도계가 기기의 방향의 변화를 감지 했을때
     console.log("add el");
     // if(this.isWithoutDeviceMotion) {
+    DeviceOrientationEvent.requestPermission();
     window.addEventListener('deviceorientation', function(event) {
         var absolute = event.absolute;
         var alpha = event.alpha;

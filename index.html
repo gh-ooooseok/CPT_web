@@ -1,15 +1,29 @@
 <html>
     <head>
-        <title> CPT </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> CPT Presenter Controller </title>
+
+        <link rel = "stylesheet" href = "gyro.css">
         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
     </head>
 
-    <body>
+    <body onload="gyroInit()">
         <h1 id="userOutput"> HI </h1>
         <input type="textfield" id = "inputData" />
         <button id="saveButton">save</button>
         <button id="loadButton">load</button>
+
+        <div id="dataContainerOrientation" class="data"></div>
+        <div id="dataContainerMotion" class="data"></div>
+
+        <div id="garden">
+            <div id="ball" class="ball">ball</div>
+        </div>
+
+        <script src="gyro.js"></script>
+        
         <script src="app.js"></script>
     </body>
 

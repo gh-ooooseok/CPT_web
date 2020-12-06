@@ -31,7 +31,7 @@ function gyroInit() {
             ball.style.top = (maxX*beta/180 + 100) + "px";
             ball.style.left = (maxY*gamma/180 + 100) + "px";
 
-        }, false);
+        }, true);
     }
 
     //가속도에 변화가 발생 할때 

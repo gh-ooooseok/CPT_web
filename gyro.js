@@ -33,16 +33,8 @@ function gyroInit() {
 
         }, true);
     }
+}
 
-    //가속도에 변화가 발생 할때 
-    if(window.DeviceMotionEvent){
-        window.addEventListener('devicemotion', function(event){
-            var x = event.accelerationIncludingGravity.x;
-            var y = event.accelerationIncludingGravity.y;
-            var z = event.accelerationIncludingGravity.z;
-            //var r = event.accelerationIncludingGravity.r;
-            var html = "x: " +x+ "<br>y: "+y+ "<br>z: " +z;
-            dataContainerMotion.innerHTML = html;
-        }, true);
-    }
+window.onload = function () {
+    gyroInit();
 }

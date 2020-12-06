@@ -9,22 +9,20 @@
         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
     </head>
 
-    <body onload="gyroInit()">
+    <body>
         <h1 id="userOutput"> HI </h1>
         <input type="textfield" id = "inputData" />
         <button id="saveButton">save</button>
         <button id="loadButton">load</button>
 
         <div id="dataContainerOrientation" class="data"></div>
-        <div id="dataContainerMotion" class="data"></div>
 
         <div id="garden">
             <div id="ball" class="ball">ball</div>
         </div>
 
-        <script src="gyro.js"></script>
-        
         <script src="app.js"></script>
+        <script src="gyro.js"></script>
     </body>
 
 </html>

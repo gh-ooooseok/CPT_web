@@ -39,11 +39,11 @@ function handleOrientation(event) {
 }
 
 window.onload = function () {
-    gyroInit();
     if (window.DeviceOrientationEvent) {
         dataContainerOrientation.innerHTML = "DeviceOrientation is supported";
-       } else if (window.OrientationEvent) {
-        dataContainerOrientation.innerHTML = ("MozOrientation is supported";
-       }
+    } else if (window.OrientationEvent) {
+        dataContainerOrientation.innerHTML = "MozOrientation is supported";
+    }
+    gyroInit();
        
 }

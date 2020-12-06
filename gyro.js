@@ -1,19 +1,17 @@
 
+var dataContainerOrientation = document.getElementById('dataContainerOrientation');
+var dataContainerMotion = document.getElementById('dataContainerMotion');
+var ball = document.getElementById("ball");
+var garden = document.getElementById("garden")
+
+var maxX = garden.clientWidth * 2 - ball.clientWidth;
+var maxY = garden.clientHeight * 2- ball.clientHeight;
+
 function gyroInit() {
-
     //Find out Div Element
-    var dataContainerOrientation = document.getElementById('dataContainerOrientation');
-    var dataContainerMotion = document.getElementById('dataContainerMotion');
-    var ball = document.getElementById("ball");
-    var garden = document.getElementById("garden")
-
-    var maxX = garden.clientWidth * 2 - ball.clientWidth;
-    var maxY = garden.clientHeight * 2- ball.clientHeight;
-
-
     window.addEventListener("deviceorientation", handleOrientation, true);
-
     console.log("add el");
+    var html =  "test";
 }
 
 function handleOrientation(event) {
@@ -38,5 +36,4 @@ function handleOrientation(event) {
 
 window.onload = function () {
     gyroInit();
-
 }

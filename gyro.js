@@ -2,21 +2,11 @@
 var dataContainerOrientation = document.getElementById('dataContainerOrientation');
 var ball = document.getElementById("ball");
 var garden = document.getElementById("garden")
-
 var maxX = garden.clientWidth * 2 - ball.clientWidth;
 var maxY = garden.clientHeight * 2- ball.clientHeight;
 
-function gyroInit() {
-    //Find out Div Element
-    window.addEventListener("deviceorientation", handleOrientation, true);
-    console.log("add el");
-    // dataContainerOrientation.innerHTML = "test";	
+const startButton = document.querySelector("#startbutton");
 
-    window.addEventListener('devicemotion', function(event) {
-        console.log(event.acceleration.x + ' m/s2');
-        // dataContainerOrientation.innerHTML = "1 " + event.acceleration.x;	
-    });
-}
 
 function handleOrientation(event) {
     var absolute = event.absolute;
@@ -39,11 +29,13 @@ function handleOrientation(event) {
 }
 
 window.onload = function () {
-    if (window.DeviceOrientationEvent) {
-        dataContainerOrientation.innerHTML = "DeviceOrientation is supported";
-    } else if (window.OrientationEvent) {
-        dataContainerOrientation.innerHTML = "MozOrientation is supported";
+    if (window.DeviceOrientationEvent !== undefined && typeof window.DeviceOrientationEvent.requestPermission === 'function') {
+        window.DeviceOrientationEvent.requestPermission().then(function (response) {
+            if ( response == 'granted' ) {
+                window.addEventListener( 'deviceorientation', handleOrientation, false );
+            }
+        }).catch(function ( error ) {
+            console.error( 'THREE.DeviceOrientationControls: Unable to use DeviceOrientation API:', error );
+        });
     }
-    gyroInit();
-       
 }

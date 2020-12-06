@@ -1,6 +1,5 @@
 
 var dataContainerOrientation = document.getElementById('dataContainerOrientation');
-var dataContainerMotion = document.getElementById('dataContainerMotion');
 var ball = document.getElementById("ball");
 var garden = document.getElementById("garden")
 
@@ -11,7 +10,7 @@ function gyroInit() {
     //Find out Div Element
     window.addEventListener("deviceorientation", handleOrientation, true);
     console.log("add el");
-    var html =  "test";
+    dataContainerOrientation.innerHTML = "test";	
 }
 
 function handleOrientation(event) {

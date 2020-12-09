@@ -1,0 +1,73 @@
+#questionForm {
+    position: relative;
+    display: block;
+    margin: auto;
+
+    padding-top: 3em;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+
+#sendButton {
+    height: 40px;
+    width: 80px;
+    background-color: cornflowerblue;
+    border: none;
+    color: white;
+    padding: 0.2em;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    vertical-align:middle;
+    display: inline-block;
+    border-radius:3px;
+}
+
+#inputField { 
+    height: 40px;
+    width: 300px;
+    padding: 0.2em;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    vertical-align:middle;
+    display: inline-block;
+    border-radius:3px;
+}
+
+#listTitle {
+    position: relative;
+    display: block;
+    margin: auto;
+
+    padding-top: 3em;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color :  cornflowerblue;
+    line-height: 16px;
+    text-align: center;
+}
+
+.question {
+    position: relative;
+    display: block;
+    margin: auto;
+
+    padding-top: 1em;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+}

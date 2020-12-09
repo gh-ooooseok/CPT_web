@@ -1,0 +1,79 @@
+h1 {
+    text-align: center;
+}
+
+#navigator {
+    position: fixed;
+    bottom: 1em;
+    text-align: center;
+    width: 100%;
+}
+
+.navigateButton {
+    top: 90%;
+    height: 50px;
+    width: 100px;
+    
+    background-color: cornflowerblue;
+    border: none;
+    color: white;
+    text-align: center;
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    
+    vertical-align: middle;
+    display: inline-block;
+    border-radius:3px;
+}
+
+.dimButton {
+    top: 90%;
+    height: 50px;
+    width: 200px;
+    
+    background-color: gray;
+    border: none;
+    color: white;
+    text-align: center;
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    
+    vertical-align: middle;
+    display: inline-block;
+    border-radius:3px;
+}
+
+#listTitle {
+    position: relative;
+    display: block;
+    margin: auto;
+
+    padding-top: 3em;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color :  cornflowerblue;
+    line-height: 16px;
+    text-align: center;
+}
+
+.question {
+    position: relative;
+    display: block;
+    margin: auto;
+
+    padding-top: 1em;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+}

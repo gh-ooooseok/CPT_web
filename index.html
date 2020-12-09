@@ -7,6 +7,7 @@
         <link rel = "stylesheet" href = "gyro.css">
         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
 
     <body>
@@ -15,17 +16,26 @@
         <button id="saveButton">save</button>
         <button id="loadButton">load</button>
 
-        
-        <button id="startButton">start</button>
-
-        <div id="dataContainerOrientation" class="data"></div>
+        <div id="dataContainerOrientation" class="data-container">
+            <span id="orientation_absolute">absolute: 0</span></br>
+            <span id="orientation_alpha">alpha: 0</span></br>
+            <span id="orientation_beta">beta: 0</span></br>
+            <span id="orientation_gamma">gamma: 0</span></br>
+        </div>
+        <div id="dataContainerMotion" class="data-container"></div>
 
         <div id="garden">
             <div id="ball" class="ball">ball</div>
         </div>
 
+		<div id="overlay">
+			<button id="startButton">Start Demo</button>
+		</div>
+
+
         <script src="app.js"></script>
-        <script src="gyro.js"></script>
     </body>
 
 </html>
+
+

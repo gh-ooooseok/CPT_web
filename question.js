@@ -55,7 +55,7 @@ getRealtimeUpdates = function() {
 
                 const newQuestion = document.createElement("div");
                 newQuestion.innerHTML = "<div class = 'question'> Q : " + docs[i] + "<div>";
-                document.getElementById("questionList").appendChild(newQuestion);
+                document.getElementById("questionList").prepend(newQuestion);
             }
         });
     });

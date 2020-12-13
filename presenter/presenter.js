@@ -26,8 +26,8 @@ var notchSide = null;
 
 permsButton.addEventListener("click", function() {
 
-    var UserAgent = navigator.userAgent;
-	if (UserAgent.match(/iPhone|iPod/i) == null) {
+    var UserAgent = navigator.platform;
+	if (UserAgent.match(/i(Phone|Pad|Pod)/i) == null) {
         alert("this feature is only working on iOS 14+");
 		return;
 	}

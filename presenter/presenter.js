@@ -26,6 +26,7 @@ var notchSide = null;
 
 permsButton.addEventListener("click", function() {
     getAccel();
+    permsButton.innerHTML = "Focus On Me Mode : " + modeState;
     permsButton.disabled = true;
 });
 

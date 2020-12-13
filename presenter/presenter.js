@@ -19,15 +19,14 @@ const prevButton = document.querySelector("#prevButton");
 const nextButton = document.querySelector("#nextButton");
 const permsButton = document.querySelector("#accelPermsButton");
 var mModestate;
-
+var alpha;
+var beta;
+var gamma;
+var notchSide = null;
 
 
 dimButton.addEventListener("click", function() {
-    if (mModestate == "off") { 
-        uploadModeState("on");
-    } else {
-        uploadModeState("off");
-    }
+    getAccel();
 });
 
 prevButton.addEventListener("click", function() {
@@ -149,19 +148,22 @@ function getAccel(){
 }
 
 function handleOrientation(event) {
-    const alpha = event.alpha,
-        beta = event.beta,
-        gamma = event.gamma;
-    if (!beta) {
-        addMouseEvent()
+    alpha = event.alpha;
+    beta = event.beta;
+    gamma = event.gamma;
+
+    if(notchSide == null) {
+        if(gamma > 0) notchSide = 'right';
+        else notchSide = 'left';
     }
 
-    if (beta < 0) { 
+    if (gamma > 0 && notchSide == 'right') { 
+        uploadModeState("off");
+    } else if (gamma < 0 && notchSide == 'right') {
         uploadModeState("on");
-    } else {
+    } else if (gamma > 0 && notchSide == 'left') { 
+        uploadModeState("on");
+    } else if (gamma < 0 && notchSide == 'left') {
         uploadModeState("off");
     }
-    // document.getElementById("alpha").innerText = "a : " + alpha;
-    // document.getElementById("beta").innerText = "b : " + beta;
-    // document.getElementById("gamma").innerText = "c : " + gamma;
 }

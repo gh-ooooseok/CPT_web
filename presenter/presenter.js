@@ -25,7 +25,14 @@ var notchSide = null;
 
 
 permsButton.addEventListener("click", function() {
+
+    var UserAgent = navigator.userAgent;
+	if (UserAgent.match(/iPhone|iPod/i) == null) {
+        alert("this feature is only working on iOS 14+");
+		return;
+	}
     getAccel();
+    
     permsButton.innerHTML = "Focus On Me Mode : " + modeState;
     permsButton.disabled = true;
 });

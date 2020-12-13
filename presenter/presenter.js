@@ -26,13 +26,13 @@ var notchSide = null;
 
 permsButton.addEventListener("click", function() {
 
-    var UserAgent = String( navigator.userAgent ).toLowerCase();
+    var UserAgent = String( navigator.platform ).toLowerCase();
 	if (/iphone|ipad/.test(UserAgent)) {
         getAccel();
         permsButton.innerHTML = "Focus On Me Mode : " + modeState;
         permsButton.disabled = true;
 	} else {
-        alert("this feature is only working on iOS 14+");
+        alert("This feature is only working on iOS 14+.\nCurrent device : " + UserAgent);
 		return;
     }
 });

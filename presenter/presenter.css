@@ -28,6 +28,10 @@ h1 {
     display: inline-block;
     border-radius:3px;
 }
+.navigateButton:disabled {
+    background-color: #cccccc;
+    color: #666666;
+}
 
 #permsButton {
     top: 90%;

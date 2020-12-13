@@ -32,7 +32,7 @@ permsButton.addEventListener("click", function() {
         permsButton.innerHTML = "Focus On Me Mode : " + modeState;
         permsButton.disabled = true;
 	} else {
-        alert("This feature is only working on iOS 14+.\nCurrent device : " + UserAgent);
+        alert("This feature is only working on iOS 14+ iPhone, iPad.\nCurrent device : " + UserAgent);
 		return;
     }
 });

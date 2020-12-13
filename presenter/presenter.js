@@ -154,13 +154,13 @@ function handleOrientation(event) {
     }
     permsButton.innerHTML = gamma;
 
-    if (gamma > 0 && notchSide == 'right') { 
+    if (gamma > 0 && notchSide == 'right' && mModestate == 'on') { 
         uploadModeState("off");
-    } else if (gamma < 0 && notchSide == 'right') {
+    } else if (gamma < 0 && notchSide == 'right' && mModestate == 'off') {
         uploadModeState("on");
-    } else if (gamma > 0 && notchSide == 'left') { 
+    } else if (gamma > 0 && notchSide == 'left' && mModestate == 'off') { 
         uploadModeState("on");
-    } else if (gamma < 0 && notchSide == 'left') {
+    } else if (gamma < 0 && notchSide == 'left' && mModestate == 'on') {
         uploadModeState("off");
     }
 }

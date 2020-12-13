@@ -27,7 +27,7 @@ var notchSide = null;
 permsButton.addEventListener("click", function() {
 
     var UserAgent = String( navigator.platform ).toLowerCase();
-	if (/iphone|ipad/.test(UserAgent)) {
+	if (/iphone|ipad|macintel/.test(UserAgent)) {
         getAccel();
         permsButton.innerHTML = "Focus On Me Mode : " + modeState;
         permsButton.disabled = true;

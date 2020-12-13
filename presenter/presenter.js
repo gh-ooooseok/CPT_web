@@ -17,7 +17,9 @@ const FocusOnPresenterRef = firestore.collection('Main').doc('FocusOnPresenter')
 const dimButton = document.querySelector("#dimButton");
 const prevButton = document.querySelector("#prevButton");
 const nextButton = document.querySelector("#nextButton");
+const permsButton = document.querySelector("#accelPermsButton");
 var mModestate;
+
 
 
 dimButton.addEventListener("click", function() {
@@ -27,16 +29,6 @@ dimButton.addEventListener("click", function() {
         uploadModeState("off");
     }
 });
-
-function uploadModeState(state) {
-    FocusOnPresenterRef.set({
-        State : state
-    }).then(function() {
-        console.log("Data saved!");
-    }).catch(function (error) {
-        console.log("Got an error: ", error);
-    });
-}
 
 prevButton.addEventListener("click", function() {
     const textToSave = "prevPage";
@@ -61,6 +53,11 @@ nextButton.addEventListener("click", function() {
         console.log("Got an error: ", error);
     });
 });
+
+permsButton.addEventListener("click", function() {
+    getAccel();
+});
+
 
 
 
@@ -112,6 +109,18 @@ addFocusOnPresenterListener = function() {
         modeState = doc.data().State;
         console.log(modeState);
         updateModeState(modeState);
+    });
+}
+
+
+
+function uploadModeState(state) {
+    FocusOnPresenterRef.set({
+        State : state
+    }).then(function() {
+        console.log("Data saved!");
+    }).catch(function (error) {
+        console.log("Got an error: ", error);
     });
 }
 

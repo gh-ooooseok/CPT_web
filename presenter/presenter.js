@@ -14,10 +14,9 @@ var firestore = firebase.firestore();
 const CurPPTRef = firestore.collection('Main').doc('CurPPT');
 const ControlInputRef = firestore.collection('Main').doc('ControlInput');
 const FocusOnPresenterRef = firestore.collection('Main').doc('FocusOnPresenter');
-const dimButton = document.querySelector("#dimButton");
+const permsButton = document.querySelector("#dimButton");
 const prevButton = document.querySelector("#prevButton");
 const nextButton = document.querySelector("#nextButton");
-const permsButton = document.querySelector("#accelPermsButton");
 var mModestate;
 var alpha;
 var beta;
@@ -53,9 +52,6 @@ nextButton.addEventListener("click", function() {
     });
 });
 
-permsButton.addEventListener("click", function() {
-    getAccel();
-});
 
 
 
@@ -156,6 +152,7 @@ function handleOrientation(event) {
         if(gamma > 0) notchSide = 'right';
         else notchSide = 'left';
     }
+    permsButton.innerHTML = gamma;
 
     if (gamma > 0 && notchSide == 'right') { 
         uploadModeState("off");

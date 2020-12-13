@@ -24,7 +24,7 @@ var gamma;
 var notchSide = null;
 
 
-dimButton.addEventListener("click", function() {
+permsButton.addEventListener("click", function() {
     getAccel();
 });
 

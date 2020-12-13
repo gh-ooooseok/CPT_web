@@ -29,10 +29,10 @@ h1 {
     border-radius:3px;
 }
 
-.dimButton {
+.permsButton {
     top: 90%;
     height: 50px;
-    width: 200px;
+    width: 300px;
     
     background-color: gray;
     border: none;

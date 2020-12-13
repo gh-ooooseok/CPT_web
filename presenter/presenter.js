@@ -14,7 +14,7 @@ var firestore = firebase.firestore();
 const CurPPTRef = firestore.collection('Main').doc('CurPPT');
 const ControlInputRef = firestore.collection('Main').doc('ControlInput');
 const FocusOnPresenterRef = firestore.collection('Main').doc('FocusOnPresenter');
-const permsButton = document.querySelector("#dimButton");
+const permsButton = document.querySelector("#permsButton");
 const prevButton = document.querySelector("#prevButton");
 const nextButton = document.querySelector("#nextButton");
 var mModestate;
@@ -121,7 +121,7 @@ function uploadModeState(state) {
 
 function updateModeState(s) {
     mModestate = s;
-    nextButton.innerHTML = modeState;
+    permsButton.innerHTML = "Focus On Me Mode : " + modeState;
 }
 
 addCurNameListener();
@@ -153,7 +153,6 @@ function handleOrientation(event) {
         if(gamma > 0) notchSide = 'right';
         else notchSide = 'left';
     }
-    permsButton.innerHTML = gamma;
 
     if (gamma > 0 && notchSide == 'right' && mModestate == 'on') { 
         uploadModeState("off");

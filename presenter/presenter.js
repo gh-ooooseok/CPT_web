@@ -121,6 +121,7 @@ function uploadModeState(state) {
 
 function updateModeState(s) {
     mModestate = s;
+    nextButton.innerHTML = modeState;
 }
 
 addCurNameListener();

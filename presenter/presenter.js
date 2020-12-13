@@ -11,39 +11,37 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 var firestore = firebase.firestore();
-const docRef = firestore.doc("controlInput/lastCmd");
-
+const CurPPTRef = firestore.collection('Main').doc('CurPPT');
+const ControlInputRef = firestore.collection('Main').doc('ControlInput');
+const FocusOnPresenterRef = firestore.collection('Main').doc('FocusOnPresenter');
 const dimButton = document.querySelector("#dimButton");
 const prevButton = document.querySelector("#prevButton");
 const nextButton = document.querySelector("#nextButton");
+var mModestate;
 
-dimButton.addEventListener("mousedown", function() {
-    console.log("Saving " + "dimMode : On" + " to firestore");
-    firestore.doc("controlInput/dimMode").set({
-        mode : "on"
+
+dimButton.addEventListener("click", function() {
+    if (mModestate == "off") { 
+        uploadModeState("on");
+    } else {
+        uploadModeState("off");
+    }
+});
+
+function uploadModeState(state) {
+    FocusOnPresenterRef.set({
+        State : state
     }).then(function() {
         console.log("Data saved!");
     }).catch(function (error) {
         console.log("Got an error: ", error);
     });
-});
-
-dimButton.addEventListener("mouseup", function() {
-    console.log("Saving " + "dimMode : Off" + " to firestore");
-    firestore.doc("controlInput/dimMode").set({
-        mode : "off"
-    }).then(function() {
-        console.log("Data saved!");
-    }).catch(function (error) {
-        console.log("Got an error: ", error);
-    });
-});
-
+}
 
 prevButton.addEventListener("click", function() {
     const textToSave = "prevPage";
     console.log("Saving " + textToSave + " to firestore");
-    docRef.set({
+    ControlInputRef.set({
         cmd : textToSave
     }).then(function() {
         console.log("Data saved!");
@@ -55,7 +53,7 @@ prevButton.addEventListener("click", function() {
 nextButton.addEventListener("click", function() {
     const textToSave = "nextPage";
     console.log("Saving " + textToSave + " to firestore");
-    docRef.set({
+    ControlInputRef.set({
         cmd : textToSave
     }).then(function() {
         console.log("Data saved!");
@@ -66,8 +64,8 @@ nextButton.addEventListener("click", function() {
 
 
 
-getRealtimeUpdates = function() {
-    const ref  = firestore.collection('questionList');
+addQuestionsListener = function() {
+    const ref  = firestore.collection(curPPT).doc('audience').collection('questions');
 
     ref.onSnapshot(function(snapshot) {
         if(snapshot.empty) {
@@ -76,6 +74,7 @@ getRealtimeUpdates = function() {
         }
 
         document.getElementById("questionList").innerHTML = "";
+        
         snapshot.forEach(function (doc) {
             let docs = doc.data();
             for(let i in docs) {
@@ -88,4 +87,72 @@ getRealtimeUpdates = function() {
         });
     });
 }
-getRealtimeUpdates();
+
+addCurNameListener = function() {
+    CurPPTRef.onSnapshot(function(doc) {
+        curPPT = doc.data().Name;
+        console.log(curPPT);
+        if(curPPT) { 
+            nextButton.disabled = false;
+            prevButton.disabled = false;
+            document.getElementById("listTitle").innerHTML = " - 질문 목록 - ";
+            addQuestionsListener();
+        }
+        else {
+            nextButton.disabled = true;
+            prevButton.disabled = true;
+            document.getElementById("listTitle").innerHTML = "";
+            document.getElementById("questionList").innerHTML = "";
+        }
+    });
+}
+
+addFocusOnPresenterListener = function() {
+    FocusOnPresenterRef.onSnapshot(function(doc) {
+        modeState = doc.data().State;
+        console.log(modeState);
+        updateModeState(modeState);
+    });
+}
+
+function updateModeState(s) {
+    mModestate = s;
+}
+
+addCurNameListener();
+addFocusOnPresenterListener();
+
+
+
+
+
+
+
+// gyro function
+
+function getAccel(){
+    DeviceMotionEvent.requestPermission().then(response => {
+        if (response == 'granted') {
+            console.log("accelerometer permission granted");
+            window.addEventListener("deviceorientation", handleOrientation);
+        }
+    });
+}
+
+function handleOrientation(event) {
+    const alpha = event.alpha,
+        beta = event.beta,
+        gamma = event.gamma;
+    if (!beta) {
+        addMouseEvent()
+    }
+
+    if (beta < 0) { 
+        uploadModeState("on");
+    } else {
+        uploadModeState("off");
+    }
+    // document.getElementById("alpha").innerText = "a : " + alpha;
+    // document.getElementById("beta").innerText = "b : " + beta;
+    // document.getElementById("gamma").innerText = "c : " + gamma;
+}

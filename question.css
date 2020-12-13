@@ -29,6 +29,10 @@
     display: inline-block;
     border-radius:3px;
 }
+#sendButton:disabled {
+    background-color: #cccccc;
+    color: #666666;
+}
 
 #inputField { 
     height: 40px;
@@ -41,6 +45,9 @@
     vertical-align:middle;
     display: inline-block;
     border-radius:3px;
+}
+#inputField:disabled {
+    color: #cccccc;
 }
 
 #listTitle {

@@ -26,6 +26,7 @@ var notchSide = null;
 
 permsButton.addEventListener("click", function() {
     getAccel();
+    permsButton.disabled = true;
 });
 
 prevButton.addEventListener("click", function() {
@@ -121,7 +122,9 @@ function uploadModeState(state) {
 
 function updateModeState(s) {
     mModestate = s;
-    permsButton.innerHTML = "Focus On Me Mode : " + modeState;
+    if (notchSide != null) {
+        permsButton.innerHTML = "Focus On Me Mode : " + modeState;
+    }
 }
 
 addCurNameListener();

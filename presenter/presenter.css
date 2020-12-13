@@ -55,6 +55,10 @@ h1 {
    -webkit-user-select: none;
    user-select: none;
 }
+.sendButton:disabled {
+    background-color: #cccccc;
+    color: #666666;
+}
 
 #listTitle {
     position: relative;
